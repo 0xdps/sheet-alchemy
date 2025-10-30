@@ -7,7 +7,7 @@ name = "sheetalchemy"
 version = "2.0"
 description = "SheetAlchemy: Google Sheets Object-Relational Mapping (ORM) for Python"
 readme = "README.md"
-license-files = ["LICENSE"]
+license = {text = "MIT"}
 authors = [
     {name = "Devendra Pratap Singh", email = "dps.manit@gmail.com"}
 ]
