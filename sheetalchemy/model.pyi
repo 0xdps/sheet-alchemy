@@ -1,9 +1,10 @@
-from typing import TypeVar, ClassVar, Any, Dict
+from typing import Any, ClassVar, Dict, TypeVar
+
 from ._manager import GModelManager
 
 class GModel:
     manager: ClassVar[GModelManager[Any]]
-    
+
     def __init__(self, data: Dict[str, Any]) -> None: ...
     def to_json(self) -> Dict[str, Any]: ...
     def get_errors(self) -> Dict[str, Any]: ...

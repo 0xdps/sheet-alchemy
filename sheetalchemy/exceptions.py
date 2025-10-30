@@ -1,10 +1,10 @@
 class FieldException(Exception):
-	pass
+    pass
 
 
 class ModelItemException(Exception):
-	pass
+    pass
 
 
 class InvalidIndexException(Exception):
-	pass
+    pass

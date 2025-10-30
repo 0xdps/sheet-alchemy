@@ -1,49 +1,52 @@
-from typing import TYPE_CHECKING, List, TypeVar, Generic
+from typing import TYPE_CHECKING, Generic, List, TypeVar
 
 from .exceptions import InvalidIndexException
 
 if TYPE_CHECKING:
-	from ._manager import GModelManager
+    from ._manager import GModelManager
 
 # Generic type variable for the model
-ModelType = TypeVar('ModelType')
+ModelType = TypeVar("ModelType")
+
 
 class GIterator(Generic[ModelType]):
 
-	def __init__(self, manager: "GModelManager", filter_list: List[int]):
-		self._manager = manager
-		self._filter_list = filter_list
-		self._start_index = 0
+    def __init__(self, manager: "GModelManager", filter_list: List[int]):
+        self._manager = manager
+        self._filter_list = filter_list
+        self._start_index = 0
 
-	def __repr__(self):
-		return f"Model: <{self._manager.model.__name__}>. Items to iterate: {self._filter_list}. Current Position: {self._start_index}"
+    def __repr__(self):
+        return f"Model: <{self._manager.model.__name__}>. Items to iterate: {self._filter_list}. Current Position: {self._start_index}"
 
-	def __iter__(self):
-		return self
+    def __iter__(self):
+        return self
 
-	def __next__(self) -> ModelType:
-		if self._start_index < len(self._filter_list):
-			entity_obj = self._manager.get_entity_from_id(self._filter_list[self._start_index])
-			self._start_index += 1
-			return entity_obj
-		raise StopIteration
+    def __next__(self) -> ModelType:
+        if self._start_index < len(self._filter_list):
+            entity_obj = self._manager.get_entity_from_id(
+                self._filter_list[self._start_index]
+            )
+            self._start_index += 1
+            return entity_obj
+        raise StopIteration
 
-	def __getitem__(self, index) -> ModelType:
-		if not isinstance(index, int)or index < 0 or index >= len(self._filter_list):
-			raise InvalidIndexException()
-		return self._manager.get_entity_from_id(self._filter_list[index])
+    def __getitem__(self, index) -> ModelType:
+        if not isinstance(index, int) or index < 0 or index >= len(self._filter_list):
+            raise InvalidIndexException()
+        return self._manager.get_entity_from_id(self._filter_list[index])
 
-	def first(self) -> ModelType:
-		return self.__getitem__(0)
+    def first(self) -> ModelType:
+        return self.__getitem__(0)
 
-	def last(self) -> ModelType:
-		return self.__getitem__(self.size() - 1)
+    def last(self) -> ModelType:
+        return self.__getitem__(self.size() - 1)
 
-	def nth(self, index) -> ModelType:
-		return self.__getitem__(index)
+    def nth(self, index) -> ModelType:
+        return self.__getitem__(index)
 
-	def size(self):
-		return len(self._filter_list)
+    def size(self):
+        return len(self._filter_list)
 
-	def reset(self):
-		self._start_index = 0
+    def reset(self):
+        self._start_index = 0

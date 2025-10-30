@@ -1,7 +1,8 @@
-from typing import TypeVar, Generic, Optional, Iterator, Any
+from typing import Any, Generic, Iterator, Optional, TypeVar
+
 from .model import GModel
 
-ModelType = TypeVar('ModelType', bound=GModel)
+ModelType = TypeVar("ModelType", bound=GModel)
 
 class GIterator(Generic[ModelType]):
     def __init__(self, model_cls: type[ModelType], iterator: Iterator[Any]) -> None: ...
