@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sheetalchemy"
-dynamic = ["version"]
+version = "2.0"
 description = "SheetAlchemy: Google Sheets Object-Relational Mapping (ORM) for Python"
 readme = "README.md"
-license = {text = "MIT"}
+license = "MIT"
 authors = [
     {name = "Devendra Pratap Singh", email = "dps.manit@gmail.com"}
 ]
@@ -15,7 +15,6 @@ keywords = ["spreadsheets", "google-sheets", "orm", "sheetalchemy", "object-rela
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
