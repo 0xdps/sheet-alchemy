@@ -24,7 +24,8 @@ def authenticate(key_object: object = None, key_path: str = None) -> None:
 	if not key_object or not isinstance(key_object, object):
 		if not key_path or not os.path.exists(key_path):
 			key_path = os.environ.get(ENV_SYSTEM_KEY_PATH)
-			key_object = json.load(open(key_path))
+			with open(key_path, encoding='utf-8') as f:
+				key_object = json.load(f)
 
 	_g_sheet = gspread.service_account_from_dict(key_object)
 

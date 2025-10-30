@@ -1,6 +1,6 @@
 # G-ODM: Google Sheets Object Data Model
 
-[![Python 3.4+](https://img.shields.io/badge/python-3.4+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 G-ODM is a Python library that provides an Object-Relational Mapping (ORM) style interface for Google Sheets. It allows developers to interact with Google Sheets data using Python objects and Django-like query syntax, eliminating the need for repetitive Google Sheets API calls.
@@ -309,8 +309,8 @@ Please review our [Privacy Policy](PRIVACY.md) for information about data handli
 
 ## 📚 Requirements
 
-- Python 3.4+
-- gspread >= 4.0.1
+- Python 3.8+
+- gspread >= 6.0.0
 - Google Sheets API access
 
 ## 🗺️ Roadmap

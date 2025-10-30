@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 from .exceptions import InvalidIndexException
 
@@ -8,7 +8,7 @@ if TYPE_CHECKING:
 
 class GIterator:
 
-	def __init__(self, manager: "GModelManager", filter_list: list):
+	def __init__(self, manager: "GModelManager", filter_list: List[int]):
 		self._manager = manager
 		self._filter_list = filter_list
 		self._start_index = 0

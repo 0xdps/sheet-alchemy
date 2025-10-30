@@ -6,7 +6,7 @@ Thank you for your interest in contributing to G-ODM! This document provides gui
 
 ### Prerequisites
 
-- Python 3.4 or higher
+- Python 3.8 or higher
 - Git
 - Google Cloud Platform account (for testing with Google Sheets)
 

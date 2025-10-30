@@ -1,7 +1,7 @@
 import json
 from datetime import datetime
 from functools import update_wrapper, partial
-from typing import Callable
+from typing import Callable, List, Union, Optional, Any
 
 from .exceptions import FieldException
 from .transformers import transform_invalid_ref_to_none, transform_na_to_none, transform_tags_to_tags
@@ -37,8 +37,8 @@ class Field(object):
 		def __get__(self, obj, obj_type):
 			return partial(self.__call__, obj)
 
-	def __init__(self, name: str = None, index: int = -1, allow_empty_or_null: bool = False, default_val: object = None,
-	             pre_transform: list = None, post_transform: list = None, **others):
+	def __init__(self, name: Optional[str] = None, index: int = -1, allow_empty_or_null: bool = False, default_val: Any = None,
+	             pre_transform: Optional[List[Callable]] = None, post_transform: Optional[List[Callable]] = None, **others):
 
 		if not pre_transform or not isinstance(pre_transform, list):
 			pre_transform = []
@@ -221,7 +221,7 @@ class DecimalField(Field):
 			if self._meta.get("allow_empty_or_null"):
 				return self._meta.get("default_val")
 			else:
-				FieldException("null or empty was found and no default is set")
+				raise FieldException("null or empty was found and no default is set")
 
 		try:
 			value = float(value)
@@ -260,8 +260,8 @@ class BooleanField(Field):
 			if self._meta.get("allow_empty_or_null"):
 				return self._meta.get("default_val")
 			else:
-				FieldException("null or empty was found and no default is set")
-		return isinstance(value, str) and self.convert_to_val(value.lower)
+				raise FieldException("null or empty was found and no default is set")
+		return isinstance(value, str) and self.convert_to_val(value.lower())
 
 	def convert_to_val(self, value):
 		return any(key == value for key in ("t", "true", "ok", "yes", "y", "1"))
@@ -287,7 +287,7 @@ class DateField(Field):
 			if self._meta.get("allow_empty_or_null"):
 				return self._meta.get("default_val")
 			else:
-				FieldException("null or empty was found and no default is set")
+				raise FieldException("null or empty was found and no default is set")
 
 		date_format = self._meta.get("date_format", DateField.MM_DD_YYYY)
 		try:
@@ -302,7 +302,7 @@ class DateField(Field):
 class ListField(Field):
 
 	def __init__(self, delimiter: str = ",", item_type: object = str, **kwargs):
-		kwargs.setdefault("datatype", list[item_type])
+		kwargs.setdefault("datatype", List[item_type])
 		kwargs.setdefault("delimiter", delimiter)
 		kwargs.setdefault("item_type", item_type)
 		kwargs.setdefault("pre_transform", [transform_tags_to_tags])

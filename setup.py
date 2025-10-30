@@ -10,13 +10,15 @@ if sys.argv[-1] == "publish":
 
 
 def read(filename):
-	return open(os.path.join(os.path.dirname(__file__), filename)).read()
+	with open(os.path.join(os.path.dirname(__file__), filename), encoding='utf-8') as f:
+		return f.read()
 
 
 version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', read('godm/__init__.py'), re.MULTILINE).group(1)
 
 def get_requirements():
-    return [r.strip("\n") for r in open("requirements.txt").readlines()]
+    with open("requirements.txt", encoding='utf-8') as f:
+        return [r.strip("\n") for r in f.readlines()]
 
 setup(
 	name="godm",
@@ -27,7 +29,7 @@ setup(
 	author_email="dps.manit@gmail.com",
 	keywords=["spreadsheets", "google-spreadsheets", "object-data-model"],
 	install_requires=get_requirements(),
-	python_requires=">=3.4",
+	python_requires=">=3.8",
 	license="MIT",
 	packages=find_packages(),
 	zip_safe=False

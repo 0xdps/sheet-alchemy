@@ -474,3 +474,16 @@ $RECYCLE.BIN/
 .vscode
 
 # End of https://www.toptal.com/developers/gitignore/api/python,linux,windows,macos,sublimetext,intellij,node
+
+# Custom G-ODM Rules
+# Ignore all markdown files except README.md, CONTRIBUTING.md and PRIVACY.md
+*.md
+!README.md
+!CONTRIBUTING.md
+!PRIVACY.md
+
+# Keep LICENSE file tracked (common file names)
+!LICENSE
+!LICENSE.txt
+!LICENSE.md
+

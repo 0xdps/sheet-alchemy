@@ -4,10 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-gspread = "==4.0.1"
-oauth2client = "*"
+gspread = ">=6.0.0"
 
 [dev-packages]
+pytest = "*"
+pytest-cov = "*"
+black = "*"
+isort = "*"
+flake8 = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "3.8"

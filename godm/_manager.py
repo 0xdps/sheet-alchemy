@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, Callable
+from typing import TYPE_CHECKING, Callable, Dict, List
 
 import gspread
 from enum import Enum
@@ -40,8 +40,8 @@ class GModelManager(object):
 	def _filter_data_list(self, **kwargs):
 		header_index = self._get_header_index()
 		all_data: gspread.Worksheet = getattr(self.model, "_data")
-		headers: list = getattr(self.model, "_headers")
-		meta:dict[str, "Field"] = getattr(self.model, "_meta")
+		headers: List[str] = getattr(self.model, "_headers")
+		meta: Dict[str, "Field"] = getattr(self.model, "_meta")
 
 		filter_data_list = []
 
