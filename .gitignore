@@ -487,3 +487,6 @@ $RECYCLE.BIN/
 !LICENSE.txt
 !LICENSE.md
 
+# tutorials files
+!tutorials/*.md
+!tutorials/**/*.md

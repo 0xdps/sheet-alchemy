@@ -23,6 +23,8 @@ G-ODM is a Python library that provides an Object-Relational Mapping (ORM) style
 - [Field Types](#field-types)
 - [Querying Data](#querying-data)
 - [Advanced Usage](#advanced-usage)
+- [Tutorials](#tutorials)
+- [Examples](#examples)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -304,8 +306,9 @@ Please review our [Privacy Policy](PRIVACY.md) for information about data handli
 ## 🆘 Support
 
 - **Issues**: [GitHub Issues](https://github.com/0xdps/g-odm/issues)
-- **Documentation**: This README and inline code documentation
-- **Examples**: Check the `test/` directory for usage examples
+- **Documentation**: [Tutorials](tutorials/README.md) and this README
+- **Examples**: Complete applications in the [examples/](examples/) directory
+- **Tests**: Comprehensive test suite in the [tests/](tests/) directory
 
 ## 📚 Requirements
 
@@ -313,8 +316,29 @@ Please review our [Privacy Policy](PRIVACY.md) for information about data handli
 - gspread >= 6.0.0
 - Google Sheets API access
 
-## 🗺️ Roadmap
+## � Tutorials
 
+Learn G-ODM step by step with our comprehensive tutorial series:
+
+- **[Getting Started](tutorials/01_getting_started.md)** - Installation, setup, and first models
+- **[Field Types](tutorials/02_field_types.md)** - Complete guide to all field types and validation
+- **[Querying & Filtering](tutorials/03_querying.md)** - Master data retrieval and filtering
+- **[Advanced Usage](tutorials/04_advanced_usage.md)** - Custom managers, transformers, and optimization
+
+📖 [**View All Tutorials**](tutorials/README.md)
+
+## 💡 Examples
+
+Explore complete example applications:
+
+- **[Basic User Management](examples/basic_user_management.py)** - Simple CRUD operations and basic querying
+- **[Advanced Inventory Management](examples/advanced_inventory_management.py)** - Complex business logic with multiple models
+
+## �🗺️ Roadmap
+
+- [x] ~~Add comprehensive unit tests~~
+- [x] ~~Implement example applications~~
+- [x] ~~Create detailed tutorials~~
 - [ ] PyPI package publication
 - [ ] More field types (JSONField, URLField)
 - [ ] Bulk operations (create, update, delete)
