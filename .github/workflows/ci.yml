@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ trunk, develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ trunk ]
 
 jobs:
   test:
@@ -25,30 +25,31 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+        pip install -e .
         pip install -e .[dev]
         
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
-        flake8 godm --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 sheetalchemy --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 godm --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        flake8 sheetalchemy --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
         
     - name: Check formatting with black
       run: |
-        black --check godm/
+        black --check sheetalchemy/
         
     - name: Check import sorting with isort
       run: |
-        isort --check-only godm/
+        isort --check-only sheetalchemy/
         
     - name: Type checking with mypy
       run: |
-        mypy godm/ --ignore-missing-imports
+        mypy sheetalchemy/ --ignore-missing-imports
         
     - name: Test with pytest
       run: |
-        pytest test/ --cov=godm --cov-report=xml
+        pytest tests/ --cov=sheetalchemy --cov-report=xml
         
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
