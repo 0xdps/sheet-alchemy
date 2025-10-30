@@ -345,7 +345,7 @@ class ListField(Field):
 		super(ListField, self).validate(headers)
 		item_type = self._meta.get("item_type")
 		if item_type not in [int, float, str]:
-			self._meta.setdefault("item_type", str)
+			self._meta["item_type"] = str
 			print(
 				f"Valid item_type options for ListFields are int, float, str, but given: {item_type}. Reset to default: str")
 

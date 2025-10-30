@@ -63,8 +63,8 @@ def mock_gspread_client(mock_spreadsheet):
 @pytest.fixture(autouse=True)
 def mock_auth(mock_gspread_client):
     """Auto-mock authentication for all tests."""
-    with patch('godm._auth._g_sheet', mock_gspread_client):
-        with patch('godm._auth.get_sheet') as mock_get_sheet:
+    with patch('sheetalchemy._auth._g_sheet', mock_gspread_client):
+        with patch('sheetalchemy._auth.get_sheet') as mock_get_sheet:
             mock_get_sheet.return_value = mock_gspread_client.open()
             yield mock_get_sheet
 
@@ -86,8 +86,12 @@ class SampleUserModel(GModel):
 
 
 @pytest.fixture
-def sample_user_model():
+def sample_user_model(mock_worksheet):
     """Provide the sample user model for testing."""
+    # The metaclass already sets up _meta, _errors, etc.
+    # Just need to set up the worksheet data for testing
+    SampleUserModel._data = mock_worksheet
+    SampleUserModel._headers = ["Name", "Age", "Email", "Active", "Tags", "DOB"]
     return SampleUserModel
 
 

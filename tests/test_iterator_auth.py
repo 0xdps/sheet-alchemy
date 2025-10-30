@@ -127,7 +127,10 @@ class TestGIterator:
         mock_manager = Mock()
         
         entities = [Mock(name="First"), Mock(name="Second"), Mock(name="Third")]
-        mock_manager.get_entity_from_id.side_effect = entities
+        # Set up mock to return correct entity based on ID
+        def get_entity_side_effect(entity_id):
+            return entities[entity_id - 1]  # IDs are 1-based, list is 0-based
+        mock_manager.get_entity_from_id.side_effect = get_entity_side_effect
         
         filter_list = [1, 2, 3]
         iterator = GIterator(mock_manager, filter_list)
@@ -236,8 +239,8 @@ class TestAuthentication:
         mock_spreadsheet = Mock()
         mock_client.open.return_value = mock_spreadsheet
         
-        with patch('godm._auth._g_sheet', mock_client):
-            with patch('godm._auth._worksheets', {}) as mock_worksheets:
+        with patch('sheetalchemy._auth._g_sheet', mock_client):
+            with patch('sheetalchemy._auth._worksheets', {}) as mock_worksheets:
                 result = get_sheet(sheet_name)
                 
                 assert result == mock_spreadsheet
@@ -249,7 +252,7 @@ class TestAuthentication:
         sheet_name = "Test Sheet"
         mock_spreadsheet = Mock()
         
-        with patch('godm._auth._worksheets', {sheet_name: mock_spreadsheet}):
+        with patch('sheetalchemy._auth._worksheets', {sheet_name: mock_spreadsheet}):
             result = get_sheet(sheet_name)
             
             assert result == mock_spreadsheet
@@ -258,17 +261,22 @@ class TestAuthentication:
         """Test getting sheet when not authenticated."""
         sheet_name = "Test Sheet"
         
-        with patch('godm._auth._g_sheet', None):
-            with patch('godm._auth.authenticate') as mock_authenticate:
+        with patch('sheetalchemy._auth._g_sheet', None):
+            with patch('sheetalchemy._auth.authenticate') as mock_authenticate:
                 mock_client = Mock()
                 mock_spreadsheet = Mock()
                 mock_client.open.return_value = mock_spreadsheet
                 
-                with patch('godm._auth._g_sheet', mock_client):
-                    result = get_sheet(sheet_name)
-                    
-                    mock_authenticate.assert_called_once()
-                    assert result == mock_spreadsheet
+                # Mock authenticate to set up _g_sheet
+                def authenticate_side_effect():
+                    import sheetalchemy._auth
+                    sheetalchemy._auth._g_sheet = mock_client
+                mock_authenticate.side_effect = authenticate_side_effect
+                
+                result = get_sheet(sheet_name)
+                
+                mock_authenticate.assert_called_once()
+                assert result == mock_spreadsheet
     
     def test_load_sheet_with_alias(self):
         """Test loading sheet with alias."""
@@ -279,8 +287,8 @@ class TestAuthentication:
         mock_spreadsheet = Mock()
         mock_client.open.return_value = mock_spreadsheet
         
-        with patch('godm._auth._g_sheet', mock_client):
-            with patch('godm._auth._worksheets', {}) as mock_worksheets:
+        with patch('sheetalchemy._auth._g_sheet', mock_client):
+            with patch('sheetalchemy._auth._worksheets', {}) as mock_worksheets:
                 load_sheet(sheet_name, alias)
                 
                 # Should store under both names
@@ -296,8 +304,8 @@ class TestAuthentication:
         mock_spreadsheet = Mock()
         mock_client.open.return_value = mock_spreadsheet
         
-        with patch('godm._auth._g_sheet', mock_client):
-            with patch('godm._auth._worksheets', {}) as mock_worksheets:
+        with patch('sheetalchemy._auth._g_sheet', mock_client):
+            with patch('sheetalchemy._auth._worksheets', {}) as mock_worksheets:
                 load_sheet(sheet_name)
                 
                 # Should only store under sheet name

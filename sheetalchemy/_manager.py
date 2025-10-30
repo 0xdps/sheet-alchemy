@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, Callable, Dict, List
+from typing import TYPE_CHECKING, Callable, Dict, List, TypeVar, Generic
 
 import gspread
 from enum import Enum
@@ -10,13 +10,16 @@ if TYPE_CHECKING:
 	from .field import Field
 	from .model import GModel
 
+# Generic type variable for the model
+ModelType = TypeVar('ModelType', bound='GModel')
+
 class LoadPolicy(Enum):
     INIT = "init"
     LAZY = "lazy"
 
-class GModelManager(object):
+class GModelManager(Generic[ModelType]):
 
-	def __init__(self, model: "GModel", setup_attrs:Callable):
+	def __init__(self, model: ModelType, setup_attrs:Callable):
 		model_meta = getattr(model, "Meta")
 		self.load_policy = getattr(model_meta, "load_policy")
 		self.model = model
@@ -105,7 +108,7 @@ class GModelManager(object):
 		if self.load_policy == LoadPolicy.LAZY:
 			self._setup_attrs()
 
-	def get(self, **kwargs) -> "GModel":
+	def get(self, **kwargs) -> ModelType:
 		self._setup_attrs()
 
 		filter_data_list = self._filter_data_list(**kwargs)
@@ -117,14 +120,14 @@ class GModelManager(object):
 
 		return self.model(model_data)
 
-	def filter(self, **kwargs):
+	def filter(self, **kwargs) -> "GIterator[ModelType]":
 		self._setup_attrs()
 
 		filter_data_list = self._filter_data_list(**kwargs)
 
 		return GIterator(self, filter_data_list)
 
-	def get_entity_from_id(self, row_index):
+	def get_entity_from_id(self, row_index) -> ModelType:
 		self._setup_attrs()
 
 		model_data = self._get_data_from_id(row_index)

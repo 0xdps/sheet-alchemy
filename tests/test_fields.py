@@ -339,7 +339,7 @@ class TestFieldBase:
         """Test Field validation with no name or index."""
         field = Field()
         headers = ["Header1", "Header2"]
-        with pytest.raises(FieldException, match="No attributes are provided"):
+        with pytest.raises(FieldException, match="name attribute \\[None\\] was not found in header list"):
             field.validate(headers)
     
     def test_field_validation_name_not_in_headers(self):

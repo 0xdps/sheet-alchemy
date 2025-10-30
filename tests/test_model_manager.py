@@ -128,7 +128,7 @@ class TestModelManager:
     
     def test_manager_initialization_init(self, mock_worksheet):
         """Test manager initialization with init load policy."""
-        with patch('godm._auth.get_sheet') as mock_get_sheet:
+        with patch('sheetalchemy._auth.get_sheet') as mock_get_sheet:
             mock_spreadsheet = Mock()
             mock_spreadsheet.worksheet.return_value = mock_worksheet
             mock_get_sheet.return_value = mock_spreadsheet
@@ -332,7 +332,7 @@ class TestModelMetaclass:
     
     def test_model_metaclass_field_validation_errors(self, mock_worksheet):
         """Test metaclass handles field validation errors."""
-        with patch('godm._auth.get_sheet') as mock_get_sheet:
+        with patch('sheetalchemy._auth.get_sheet') as mock_get_sheet:
             mock_spreadsheet = Mock()
             mock_spreadsheet.worksheet.return_value = mock_worksheet
             mock_get_sheet.return_value = mock_spreadsheet

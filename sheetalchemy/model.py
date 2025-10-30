@@ -1,11 +1,15 @@
 import json
 import datetime
+from typing import TYPE_CHECKING, ClassVar
 from ._manager import GModelManager
 from ._meta import GModelMeta
 
+if TYPE_CHECKING:
+    from typing import Any, Dict
+
 
 class GModel(object, metaclass=GModelMeta):
-	manager = GModelManager
+	manager: ClassVar['GModelManager[Any]']
 
 	def __init__(self, data):
 		fields = data.get("fields", {})

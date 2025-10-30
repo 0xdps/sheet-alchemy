@@ -24,8 +24,9 @@ def authenticate(key_object: object = None, key_path: str = None) -> None:
 	if not key_object or not isinstance(key_object, object):
 		if not key_path or not os.path.exists(key_path):
 			key_path = os.environ.get(ENV_SYSTEM_KEY_PATH)
-			with open(key_path, encoding='utf-8') as f:
-				key_object = json.load(f)
+		
+		with open(key_path, encoding='utf-8') as f:
+			key_object = json.load(f)
 
 	_g_sheet = gspread.service_account_from_dict(key_object)
 
@@ -49,7 +50,7 @@ def get_sheet(sheet_name: str):
 	return _worksheets.get(sheet_name)
 
 
-def load_sheet(sheet_name: str, alias: str = "default") -> None:
+def load_sheet(sheet_name: str, alias: str = None) -> None:
 	"""Load the Google Sheet object for later use. It creates the :class:`gspread.models.Spreadsheet` instance
 	and catches it along with alias name as well
 
