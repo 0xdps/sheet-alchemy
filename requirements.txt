@@ -1,1 +1,7 @@
-gspread>=6.0.0
+# Production dependencies for SheetAlchemy
+# Google Sheets integration
+gspread==6.2.1
+
+# Dependencies (automatically resolved)
+google-auth>=2.0.0
+google-auth-oauthlib>=0.8.0

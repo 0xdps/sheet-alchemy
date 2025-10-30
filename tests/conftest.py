@@ -3,9 +3,9 @@
 import pytest
 from unittest.mock import Mock, MagicMock, patch
 import gspread
-from godm.field import StringField, IntegerField, DateField, BooleanField, ListField, CustomField
-from godm.model import GModel
-from godm import LoadPolicy
+from sheetalchemy.field import StringField, IntegerField, DateField, BooleanField, ListField, CustomField
+from sheetalchemy.model import GModel
+from sheetalchemy import LoadPolicy
 
 
 @pytest.fixture

@@ -1,6 +1,6 @@
 # Field Types Tutorial
 
-G-ODM provides various field types to handle different data types in your Google Sheets. Each field type has specific validation rules and conversion methods.
+SheetAlchemy provides various field types to handle different data types in your Google Sheets. Each field type has specific validation rules and conversion methods.
 
 ## Core Field Types
 
@@ -9,7 +9,7 @@ G-ODM provides various field types to handle different data types in your Google
 The most basic field type for text data.
 
 ```python
-from godm import Model, StringField
+from sheetalchemy import Model, StringField
 
 class Person(Model):
     # Basic string field
@@ -44,7 +44,7 @@ person = Person(
 For whole numbers.
 
 ```python
-from godm import Model, IntegerField
+from sheetalchemy import Model, IntegerField
 
 class Product(Model):
     name = StringField()
@@ -89,7 +89,7 @@ except ValidationError as e:
 For precise decimal numbers and currency.
 
 ```python
-from godm import Model, DecimalField
+from sheetalchemy import Model, DecimalField
 from decimal import Decimal
 
 class Invoice(Model):
@@ -132,7 +132,7 @@ invoice2 = Invoice(
 For True/False values.
 
 ```python
-from godm import Model, BooleanField
+from sheetalchemy import Model, BooleanField
 
 class User(Model):
     username = StringField()
@@ -167,7 +167,7 @@ user = User(
 For date values (without time).
 
 ```python
-from godm import Model, DateField
+from sheetalchemy import Model, DateField
 from datetime import date, datetime
 
 class Event(Model):
@@ -209,7 +209,7 @@ event2 = Event(
 For storing lists of values (stored as JSON in sheets).
 
 ```python
-from godm import Model, ListField
+from sheetalchemy import Model, ListField
 
 class Article(Model):
     title = StringField()
@@ -245,7 +245,7 @@ article = Article(
 For custom data types and transformations.
 
 ```python
-from godm import Model, CustomField
+from sheetalchemy import Model, CustomField
 import json
 
 class JSONField(CustomField):
@@ -295,8 +295,8 @@ print(loaded_config.settings["theme"])  # "dark"
 
 ```python
 import re
-from godm import CustomField
-from godm.exceptions import ValidationError
+from sheetalchemy import CustomField
+from sheetalchemy.exceptions import ValidationError
 
 class EmailField(CustomField):
     """Custom field with email validation."""

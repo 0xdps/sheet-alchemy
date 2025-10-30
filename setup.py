@@ -14,20 +14,20 @@ def read(filename):
 		return f.read()
 
 
-version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', read('godm/__init__.py'), re.MULTILINE).group(1)
+version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', read('sheetalchemy/__init__.py'), re.MULTILINE).group(1)
 
 def get_requirements():
     with open("requirements.txt", encoding='utf-8') as f:
         return [r.strip("\n") for r in f.readlines()]
 
 setup(
-	name="godm",
+	name="sheetalchemy",
 	version=version,
-	description="Data Object Model for Google Sheet",
-	url="https://github.com/devendrapratap02/g-odm",
+	description="SheetAlchemy: Google Sheets Object-Relational Mapping (ORM) for Python",
+	url="https://github.com/0xdps/sheetalchemy",
 	author="Devendra Pratap Singh",
 	author_email="dps.manit@gmail.com",
-	keywords=["spreadsheets", "google-spreadsheets", "object-data-model"],
+	keywords=["spreadsheets", "google-sheets", "orm", "sheetalchemy", "object-relational-mapping"],
 	install_requires=get_requirements(),
 	python_requires=">=3.8",
 	license="MIT",

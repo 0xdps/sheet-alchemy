@@ -4,14 +4,18 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-gspread = ">=6.0.0"
+gspread = "==6.2.1"
 
 [dev-packages]
-pytest = "*"
-pytest-cov = "*"
-black = "*"
-isort = "*"
-flake8 = "*"
+pytest = "==8.3.0"
+pytest-cov = "==6.1.0"
+black = "==24.10.0"
+isort = "==5.13.2"
+flake8 = "==7.1.1"
+mypy = "==1.13.0"
+build = "==1.2.2"
+twine = "==6.0.1"
+sphinx = ">=7.0.0"
 
 [requires]
 python_version = "3.8"

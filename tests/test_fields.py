@@ -11,11 +11,11 @@ This module tests all field types with various scenarios including:
 
 import pytest
 from datetime import datetime
-from godm.field import (
+from sheetalchemy.field import (
     StringField, IntegerField, DateField, BooleanField, 
     DecimalField, ListField, CustomField, Field
 )
-from godm.exceptions import FieldException
+from sheetalchemy.exceptions import FieldException
 
 
 class TestStringField:

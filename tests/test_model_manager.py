@@ -11,11 +11,11 @@ This module tests:
 
 import pytest
 from unittest.mock import Mock, patch
-from godm.model import GModel
-from godm._manager import GModelManager, LoadPolicy
-from godm.field import StringField, IntegerField, BooleanField
-from godm.exceptions import ModelItemException, FieldException
-from godm.iterator import GIterator
+from sheetalchemy.model import GModel
+from sheetalchemy._manager import GModelManager, LoadPolicy
+from sheetalchemy.field import StringField, IntegerField, BooleanField
+from sheetalchemy.exceptions import ModelItemException, FieldException
+from sheetalchemy.iterator import GIterator
 
 
 class TestModelCreation:

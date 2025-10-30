@@ -1,6 +1,6 @@
-# Getting Started with G-ODM
+# Getting Started with SheetAlchemy
 
-G-ODM (Google Sheets Object Document Mapper) is a Python library that provides an ORM-like interface for Google Sheets, allowing you to work with spreadsheet data using familiar Python patterns.
+SheetAlchemy (Google Sheets Object-Relational Mapping) is a Python library that provides an ORM-like interface for Google Sheets, allowing you to work with spreadsheet data using familiar Python patterns.
 
 ## Prerequisites
 
@@ -14,14 +14,14 @@ Before you begin, make sure you have:
 ### Using pip
 
 ```bash
-pip install g-odm
+pip install sheetalchemy
 ```
 
 ### From source
 
 ```bash
-git clone https://github.com/your-username/g-odm.git
-cd g-odm
+git clone https://github.com/0xdps/sheetalchemy.git
+cd sheetalchemy
 pip install -e .
 ```
 
@@ -47,7 +47,7 @@ pip install -e .
 2. Share it with your service account email address
 3. Give the service account "Editor" permissions
 
-## Your First G-ODM Model
+## Your First SheetAlchemy Model
 
 Let's create a simple model to manage user data in a Google Sheet.
 
@@ -56,7 +56,7 @@ Let's create a simple model to manage user data in a Google Sheet.
 Create a file called `auth_config.py`:
 
 ```python
-from godm import authenticate
+from sheetalchemy import authenticate
 
 # Replace with your service account file path
 SERVICE_ACCOUNT_FILE = 'path/to/your/service-account-key.json'
@@ -70,7 +70,7 @@ client = authenticate(SERVICE_ACCOUNT_FILE)
 Create a file called `models.py`:
 
 ```python
-from godm import Model, StringField, IntegerField, DateField
+from sheetalchemy import Model, StringField, IntegerField, DateField
 from auth_config import client
 
 class User(Model):
@@ -183,7 +183,7 @@ Here's a complete working example you can run:
 
 ```python
 # complete_example.py
-from godm import Model, StringField, IntegerField, authenticate
+from sheetalchemy import Model, StringField, IntegerField, authenticate
 from datetime import date
 
 # 1. Authenticate
@@ -229,7 +229,7 @@ if __name__ == "__main__":
 
 ## Understanding the Google Sheet Structure
 
-When you run your G-ODM code, it will automatically:
+When you run your SheetAlchemy code, it will automatically:
 
 1. **Create headers**: The first row will contain field names
 2. **Add data rows**: Each model instance becomes a row
@@ -247,7 +247,7 @@ Your sheet will look like this:
 ### Error Handling
 
 ```python
-from godm.exceptions import ValidationError, SheetNotFoundError
+from sheetalchemy.exceptions import ValidationError, SheetNotFoundError
 
 try:
     user = User(name="", email="invalid-email")  # Invalid data
@@ -265,7 +265,7 @@ except SheetNotFoundError as e:
 
 ```python
 from datetime import date, datetime
-from godm import DateField
+from sheetalchemy import DateField
 
 class Event(Model):
     title = StringField()
@@ -326,7 +326,7 @@ Now that you understand the basics:
 
 **Sheet Not Found**: Verify your `sheet_id` is correct and the worksheet name matches exactly.
 
-**Import Error**: Make sure G-ODM is installed: `pip install g-odm`
+**Import Error**: Make sure SheetAlchemy is installed: `pip install sheetalchemy`
 
 ### Getting Help
 
@@ -334,4 +334,4 @@ Now that you understand the basics:
 - Look at [example applications](../examples/)
 - Open an issue on GitHub
 
-Happy coding with G-ODM! 🚀
+Happy coding with SheetAlchemy! 🚀

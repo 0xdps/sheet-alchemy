@@ -1,13 +1,13 @@
 # Querying and Filtering Tutorial
 
-G-ODM provides a powerful Django-inspired querying API that allows you to filter, sort, and manipulate your Google Sheets data with ease.
+SheetAlchemy provides a powerful Django-inspired querying API that allows you to filter, sort, and manipulate your Google Sheets data with ease.
 
 ## Basic Querying
 
 ### Getting All Records
 
 ```python
-from godm import Model, StringField, IntegerField
+from sheetalchemy import Model, StringField, IntegerField
 
 class Product(Model):
     name = StringField()
@@ -45,7 +45,7 @@ expensive_product = Product.objects.filter(price__gt=1000).first()
 
 ## Filtering with Lookups
 
-G-ODM supports various lookup types for filtering data:
+SheetAlchemy supports various lookup types for filtering data:
 
 ### Exact Match
 
@@ -143,7 +143,7 @@ expensive_electronics = Product.objects.filter(
 ### OR Conditions
 
 ```python
-from godm import Q
+from sheetalchemy import Q
 
 # Use Q objects for OR conditions
 phones_or_tablets = Product.objects.filter(
@@ -339,7 +339,7 @@ results = search_products(name="phone", min_price=200, max_price=800)
 ### Building Complex Queries
 
 ```python
-from godm import Q
+from sheetalchemy import Q
 
 def advanced_product_search(query_params):
     """Build complex queries from parameters."""
@@ -419,7 +419,7 @@ class ProductQueries:
 
 ```python
 from datetime import date, timedelta
-from godm import DateField
+from sheetalchemy import DateField
 
 class Order(Model):
     order_date = DateField()
@@ -593,7 +593,7 @@ categories = cache.get_categories()  # Cached after first call
 ## Error Handling
 
 ```python
-from godm.exceptions import ValidationError, SheetNotFoundError
+from sheetalchemy.exceptions import ValidationError, SheetNotFoundError
 
 def safe_query_products(filters=None):
     """Safely query products with error handling."""

@@ -1,18 +1,18 @@
-# Privacy Policy for G-ODM
+# Privacy Policy for SheetAlchemy
 
 **Last Updated: October 30, 2025**
 
-This Privacy Policy describes how G-ODM (Google Sheets Object Data Model) handles data and privacy considerations when using this library.
+This Privacy Policy describes how SheetAlchemy (Google Sheets Object Data Model) handles data and privacy considerations when using this library.
 
 ## 🔒 Overview
 
-G-ODM is an open-source Python library that provides an interface to Google Sheets. This privacy policy explains how data flows through the library and what developers should consider when using G-ODM in their applications.
+SheetAlchemy is an open-source Python library that provides an interface to Google Sheets. This privacy policy explains how data flows through the library and what developers should consider when using SheetAlchemy in their applications.
 
 ## 📊 Data Handling
 
-### What G-ODM Does
+### What SheetAlchemy Does
 
-G-ODM acts as a **client-side library** that:
+SheetAlchemy acts as a **client-side library** that:
 
 - Connects to Google Sheets API on behalf of your application
 - Reads data from Google Sheets that you have authorized access to
@@ -22,19 +22,19 @@ G-ODM acts as a **client-side library** that:
 ### Data Flow
 
 ```
-Your Application → G-ODM Library → Google Sheets API → Google Sheets
+Your Application → SheetAlchemy Library → Google Sheets API → Google Sheets
 ```
 
 1. **Authentication**: Your application provides Google API credentials
-2. **Data Retrieval**: G-ODM uses these credentials to fetch data from specified Google Sheets
+2. **Data Retrieval**: SheetAlchemy uses these credentials to fetch data from specified Google Sheets
 3. **Local Processing**: All data transformation and filtering happens locally in your application
-4. **No External Storage**: G-ODM does not persist or transmit data to any third-party services
+4. **No External Storage**: SheetAlchemy does not persist or transmit data to any third-party services
 
 ## 🔐 Authentication and Credentials
 
 ### Service Account Keys
 
-G-ODM requires Google Service Account credentials to access Google Sheets:
+SheetAlchemy requires Google Service Account credentials to access Google Sheets:
 
 - **Your Responsibility**: Securely store and manage your service account key files
 - **Best Practices**: 
@@ -45,14 +45,14 @@ G-ODM requires Google Service Account credentials to access Google Sheets:
 
 ### Google Sheets Access
 
-G-ODM can only access Google Sheets that:
+SheetAlchemy can only access Google Sheets that:
 - Are explicitly shared with your service account email
 - Have appropriate permissions (read, write as needed)
 - Are accessible through the Google Sheets API
 
 ## 🛡️ Security Considerations
 
-### For Developers Using G-ODM
+### For Developers Using SheetAlchemy
 
 1. **Credential Security**
    ```python
@@ -81,17 +81,17 @@ G-ODM can only access Google Sheets that:
 
 ### For End Users
 
-If you're using an application built with G-ODM:
+If you're using an application built with SheetAlchemy:
 
 - The application developer is responsible for data privacy and security
-- G-ODM itself does not collect or store your personal data
+- SheetAlchemy itself does not collect or store your personal data
 - Review the privacy policy of the specific application you're using
 
 ## 📋 Data Processing
 
 ### Local Processing Only
 
-G-ODM performs all operations locally:
+SheetAlchemy performs all operations locally:
 
 - **Field Validation**: Type checking and format validation
 - **Data Transformation**: Converting strings to dates, numbers, etc.
@@ -100,7 +100,7 @@ G-ODM performs all operations locally:
 
 ### No Data Collection
 
-G-ODM does **NOT**:
+SheetAlchemy does **NOT**:
 - Collect usage analytics or telemetry
 - Store user data on external servers  
 - Share data with third parties
@@ -110,7 +110,7 @@ G-ODM does **NOT**:
 
 ### Google Sheets API
 
-G-ODM integrates with Google Sheets API:
+SheetAlchemy integrates with Google Sheets API:
 
 - **Purpose**: Reading and writing sheet data
 - **Data Shared**: Only the sheet data you explicitly access
@@ -119,17 +119,17 @@ G-ODM integrates with Google Sheets API:
 
 ### Dependencies
 
-G-ODM relies on:
+SheetAlchemy relies on:
 - **gspread**: Python library for Google Sheets API (follows same privacy principles)
 - **Python Standard Library**: No additional privacy implications
 
 ## 📱 Application Developer Responsibilities
 
-If you're building applications with G-ODM:
+If you're building applications with SheetAlchemy:
 
 ### Privacy Compliance
 
-1. **Create Your Own Privacy Policy**: G-ODM's policy does not cover your application
+1. **Create Your Own Privacy Policy**: SheetAlchemy's policy does not cover your application
 2. **Data Handling**: Implement appropriate data protection measures
 3. **User Consent**: Obtain necessary permissions for accessing user data
 4. **Compliance**: Follow applicable laws (GDPR, CCPA, etc.)
@@ -159,7 +159,7 @@ class UserModel(GModel):
 
 ### Built-in Features
 
-G-ODM supports data minimization through:
+SheetAlchemy supports data minimization through:
 
 ```python
 # Load only when needed
@@ -176,7 +176,7 @@ user_names = [user.name for user in Users.manager.filter(active=True)]
 
 ## 📞 Contact Information
 
-### For G-ODM Library Issues
+### For SheetAlchemy Library Issues
 
 - **GitHub Issues**: [https://github.com/0xdps/g-odm/issues](https://github.com/0xdps/g-odm/issues)
 - **Security Issues**: Contact maintainer directly via GitHub
@@ -184,12 +184,12 @@ user_names = [user.name for user in Users.manager.filter(active=True)]
 
 ### For Application-Specific Privacy Questions
 
-Contact the developer of the specific application you're using, not the G-ODM maintainers.
+Contact the developer of the specific application you're using, not the SheetAlchemy maintainers.
 
 ## 🔄 Updates to This Policy
 
 This privacy policy may be updated to reflect:
-- Changes in G-ODM functionality
+- Changes in SheetAlchemy functionality
 - Legal requirements
 - Best practice improvements
 
@@ -202,24 +202,24 @@ This privacy policy may be updated to reflect:
 
 ### Disclaimer
 
-G-ODM is provided "as is" without warranties. Users are responsible for:
+SheetAlchemy is provided "as is" without warranties. Users are responsible for:
 - Complying with applicable privacy laws
 - Implementing appropriate security measures
 - Protecting user data in their applications
 
 ### Limitation of Liability
 
-The G-ODM maintainers are not responsible for:
+The SheetAlchemy maintainers are not responsible for:
 - How developers use the library
-- Privacy practices of applications built with G-ODM
-- Data breaches in applications using G-ODM
+- Privacy practices of applications built with SheetAlchemy
+- Data breaches in applications using SheetAlchemy
 - Compliance with privacy regulations by third parties
 
 ## 🌐 International Considerations
 
 ### Data Transfers
 
-When using G-ODM:
+When using SheetAlchemy:
 - Data flows between your application and Google Sheets
 - Google Sheets data may be stored in various Google data centers globally
 - Refer to [Google's data transfer policies](https://cloud.google.com/terms/data-transfer-practices) for details
@@ -235,14 +235,14 @@ Developers should consider:
 
 ## 📋 Summary
 
-- **G-ODM is a client-side library** that doesn't collect or store user data
+- **SheetAlchemy is a client-side library** that doesn't collect or store user data
 - **All data processing happens locally** in your application
 - **Developers are responsible** for privacy practices in their applications  
-- **Google Sheets API** is the only external service G-ODM communicates with
-- **Security is shared responsibility** between G-ODM, developers, and users
+- **Google Sheets API** is the only external service SheetAlchemy communicates with
+- **Security is shared responsibility** between SheetAlchemy, developers, and users
 
 For questions about this privacy policy, please open an issue on GitHub.
 
 ---
 
-**This privacy policy applies specifically to the G-ODM library. Applications built using G-ODM may have their own privacy policies and practices.**
+**This privacy policy applies specifically to the SheetAlchemy library. Applications built using SheetAlchemy may have their own privacy policies and practices.**

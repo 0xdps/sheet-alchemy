@@ -1,6 +1,6 @@
-# Contributing to G-ODM
+# Contributing to SheetAlchemy
 
-Thank you for your interest in contributing to G-ODM! This document provides guidelines and information for contributors.
+Thank you for your interest in contributing to SheetAlchemy! This document provides guidelines and information for contributors.
 
 ## 🚀 Getting Started
 
@@ -54,18 +54,18 @@ We recommend using these tools for consistent formatting:
 pip install black isort flake8
 
 # Format code
-black godm/
-isort godm/
+black sheetalchemy/
+isort sheetalchemy/
 
 # Check style
-flake8 godm/
+flake8 sheetalchemy/
 ```
 
 ### Project Structure
 
 ```
 g-odm/
-├── godm/                   # Main package
+├── sheetalchemy/                   # Main package
 │   ├── __init__.py        # Package initialization
 │   ├── model.py           # Base model classes
 │   ├── field.py           # Field types
@@ -92,7 +92,7 @@ g-odm/
 python -m pytest test/
 
 # Run with coverage
-python -m pytest --cov=godm test/
+python -m pytest --cov=sheetalchemy test/
 
 # Run specific test file
 python -m pytest test/test_fields.py
@@ -109,7 +109,7 @@ python -m pytest test/test_fields.py
 Example test structure:
 ```python
 import unittest
-from godm.field import StringField
+from sheetalchemy.field import StringField
 
 class TestStringField(unittest.TestCase):
     def test_string_field_validation(self):
@@ -159,7 +159,7 @@ When reporting bugs, please include:
 3. **Test Changes**
    ```bash
    python -m pytest test/
-   flake8 godm/
+   flake8 sheetalchemy/
    ```
 
 4. **Commit Changes**
@@ -284,8 +284,8 @@ Contributors will be:
 
 ## 📄 Legal
 
-By contributing to G-ODM, you agree that your contributions will be licensed under the same MIT License that covers the project.
+By contributing to SheetAlchemy, you agree that your contributions will be licensed under the same MIT License that covers the project.
 
 ---
 
-Thank you for contributing to G-ODM! Your efforts help make this library better for everyone. 🙏
+Thank you for contributing to SheetAlchemy! Your efforts help make this library better for everyone. 🙏

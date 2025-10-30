@@ -1,6 +1,6 @@
 # Advanced Usage Tutorial
 
-This tutorial covers advanced G-ODM features including custom managers, data transformers, batch operations, performance optimization, and integration patterns.
+This tutorial covers advanced SheetAlchemy features including custom managers, data transformers, batch operations, performance optimization, and integration patterns.
 
 ## Custom Managers
 
@@ -9,7 +9,7 @@ Managers provide a way to add custom query methods and encapsulate common databa
 ### Creating Custom Managers
 
 ```python
-from godm import Manager, Model, StringField, IntegerField, BooleanField, DateField
+from sheetalchemy import Manager, Model, StringField, IntegerField, BooleanField, DateField
 from datetime import date, timedelta
 
 class ProductManager(Manager):
@@ -33,7 +33,7 @@ class ProductManager(Manager):
     
     def search(self, query):
         """Search products by name or description."""
-        from godm import Q
+        from sheetalchemy import Q
         return self.filter(
             Q(name__icontains=query) | Q(description__icontains=query)
         )
@@ -126,7 +126,7 @@ Transformers allow you to modify data before saving to sheets and after loading 
 ### Built-in Transformers
 
 ```python
-from godm.transformers import UpperCaseTransformer, LowerCaseTransformer, SlugTransformer
+from sheetalchemy.transformers import UpperCaseTransformer, LowerCaseTransformer, SlugTransformer
 
 class Article(Model):
     title = StringField()
@@ -151,7 +151,7 @@ article.save()
 ### Custom Transformers
 
 ```python
-from godm.transformers import BaseTransformer
+from sheetalchemy.transformers import BaseTransformer
 import re
 
 class PhoneNumberTransformer(BaseTransformer):
@@ -206,7 +206,7 @@ class Product(Model):
 
 ```python
 import json
-from godm.transformers import BaseTransformer
+from sheetalchemy.transformers import BaseTransformer
 
 class JSONTransformer(BaseTransformer):
     """Store Python objects as JSON strings."""
@@ -417,7 +417,7 @@ print(f"Applied ${discount:.2f} discount")
 ### Model Validation
 
 ```python
-from godm.exceptions import ValidationError
+from sheetalchemy.exceptions import ValidationError
 
 class User(Model):
     username = StringField(required=True)
@@ -537,7 +537,7 @@ class ConnectionManager:
     def get_client(self, service_account_file):
         """Get or create client connection."""
         if service_account_file not in self._clients:
-            from godm import authenticate
+            from sheetalchemy import authenticate
             self._clients[service_account_file] = {
                 'client': authenticate(service_account_file),
                 'created': time.time()
@@ -609,7 +609,7 @@ for product in process_large_dataset_memory_efficient(Product):
 
 ```python
 from flask import Flask, jsonify, request
-from godm.exceptions import ValidationError
+from sheetalchemy.exceptions import ValidationError
 
 app = Flask(__name__)
 
@@ -844,7 +844,7 @@ app.conf.beat_schedule = {
 
 ```python
 import logging
-from godm.exceptions import ValidationError, SheetNotFoundError
+from sheetalchemy.exceptions import ValidationError, SheetNotFoundError
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -918,14 +918,14 @@ else:
     print("Product not found or error occurred")
 ```
 
-## Testing G-ODM Applications
+## Testing SheetAlchemy Applications
 
 ### Unit Testing
 
 ```python
 import unittest
 from unittest.mock import Mock, patch
-from godm import Model, StringField, IntegerField
+from sheetalchemy import Model, StringField, IntegerField
 
 class TestProduct(unittest.TestCase):
     """Test Product model."""
@@ -981,7 +981,7 @@ if __name__ == '__main__':
 
 ```python
 import pytest
-from godm import authenticate
+from sheetalchemy import authenticate
 import os
 
 @pytest.fixture
@@ -1036,12 +1036,12 @@ def test_full_crud_operations(test_product_model):
 
 ## Next Steps
 
-You've now learned advanced G-ODM patterns! Here's what to explore next:
+You've now learned advanced SheetAlchemy patterns! Here's what to explore next:
 
 1. **Build a complete application**: Try the examples in the `examples/` directory
-2. **Contribute to G-ODM**: Check out the [Contributing Guide](../CONTRIBUTING.md)
+2. **Contribute to SheetAlchemy**: Check out the [Contributing Guide](../CONTRIBUTING.md)
 3. **Performance tuning**: Optimize your specific use cases
-4. **Integration patterns**: Adapt G-ODM to your application architecture
+4. **Integration patterns**: Adapt SheetAlchemy to your application architecture
 5. **Community**: Share your experiences and learn from others
 
 ## Advanced Tips Summary
@@ -1054,4 +1054,4 @@ You've now learned advanced G-ODM patterns! Here's what to explore next:
 - **Monitor performance** when working with large datasets
 - **Document your code** for maintainability
 
-Happy building with G-ODM! 🚀
+Happy building with SheetAlchemy! 🚀

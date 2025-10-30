@@ -1,14 +1,14 @@
-# G-ODM Tutorials
+# SheetAlchemy Tutorials
 
-Welcome to the comprehensive G-ODM tutorial series! These step-by-step guides will help you master Google Sheets ORM with Python.
+Welcome to the comprehensive SheetAlchemy tutorial series! These step-by-step guides will help you master Google Sheets ORM with Python.
 
 ## Tutorial Overview
 
 ### 🚀 [Getting Started](01_getting_started.md)
-Learn the fundamentals of G-ODM, from installation to creating your first models and performing basic operations.
+Learn the fundamentals of SheetAlchemy, from installation to creating your first models and performing basic operations.
 
 **What you'll learn:**
-- Installing G-ODM and setting up Google Sheets API
+- Installing SheetAlchemy and setting up Google Sheets API
 - Creating your first model and fields
 - Basic CRUD operations (Create, Read, Update, Delete)
 - Authentication and sheet configuration
@@ -37,7 +37,7 @@ Master all available field types and learn how to validate and transform your da
 ---
 
 ### 🔍 [Querying and Filtering](03_querying.md)
-Explore G-ODM's powerful Django-inspired querying API for data manipulation.
+Explore SheetAlchemy's powerful Django-inspired querying API for data manipulation.
 
 **What you'll learn:**
 - Basic and advanced filtering techniques
@@ -63,7 +63,7 @@ Dive into advanced patterns including custom managers, data transformers, and in
 - Model inheritance patterns
 - Integration with Flask/Django
 - Error handling and logging strategies
-- Testing G-ODM applications
+- Testing SheetAlchemy applications
 
 **Prerequisites:** Completed all previous tutorials
 
@@ -86,7 +86,7 @@ Dive into advanced patterns including custom managers, data transformers, and in
 ### Advanced Path (6-8 hours)
 1. Complete Intermediate Path
 2. **Advanced Usage** - Learn expert patterns
-3. Build your own application using G-ODM
+3. Build your own application using SheetAlchemy
 4. Contribute to the project
 
 ## Quick Reference
@@ -132,11 +132,11 @@ class Product(Model):
 
 ```python
 # Authentication
-from godm import authenticate
+from sheetalchemy import authenticate
 client = authenticate('service-account-key.json')
 
 # Error Handling
-from godm.exceptions import ValidationError, SheetNotFoundError
+from sheetalchemy.exceptions import ValidationError, SheetNotFoundError
 
 try:
     product.save()
@@ -171,8 +171,8 @@ if not os.path.exists('path/to/service-account.json'):
 
 ### Import Errors
 ```bash
-# Install G-ODM
-pip install g-odm
+# Install SheetAlchemy
+pip install sheetalchemy
 
 # Or install from source
 pip install -e .
@@ -180,7 +180,7 @@ pip install -e .
 
 ### Sheet Access Issues
 ```python
-from godm.exceptions import SheetNotFoundError
+from sheetalchemy.exceptions import SheetNotFoundError
 
 try:
     products = Product.objects.all()
@@ -196,7 +196,7 @@ except SheetNotFoundError:
 
 ### Documentation
 - [README](../README.md) - Project overview and installation
-- [Contributing](../CONTRIBUTING.md) - How to contribute to G-ODM
+- [Contributing](../CONTRIBUTING.md) - How to contribute to SheetAlchemy
 - [Privacy Policy](../PRIVACY.md) - Data handling and privacy
 
 ### Community
@@ -207,7 +207,7 @@ except SheetNotFoundError:
 ## Tips for Success
 
 1. **Start Small**: Begin with simple models and gradually add complexity
-2. **Read Error Messages**: G-ODM provides helpful error messages for debugging
+2. **Read Error Messages**: SheetAlchemy provides helpful error messages for debugging
 3. **Use Type Hints**: Improve code quality with Python type annotations
 4. **Test Early**: Write tests as you develop your models
 5. **Follow Conventions**: Use consistent naming and structure
@@ -217,10 +217,10 @@ except SheetNotFoundError:
 
 After completing these tutorials, you'll be ready to:
 
-- Build production G-ODM applications
-- Integrate G-ODM with web frameworks
-- Contribute to the G-ODM project
+- Build production SheetAlchemy applications
+- Integrate SheetAlchemy with web frameworks
+- Contribute to the SheetAlchemy project
 - Help others in the community
 - Explore advanced Google Sheets API features
 
-Start with [Getting Started](01_getting_started.md) and begin your G-ODM journey! 🎯
+Start with [Getting Started](01_getting_started.md) and begin your SheetAlchemy journey! 🎯

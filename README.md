@@ -1,9 +1,9 @@
-# G-ODM: Google Sheets Object Data Model
+# SheetAlchemy: Google Sheets Object-Relational Mapping (ORM)
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-G-ODM is a Python library that provides an Object-Relational Mapping (ORM) style interface for Google Sheets. It allows developers to interact with Google Sheets data using Python objects and Django-like query syntax, eliminating the need for repetitive Google Sheets API calls.
+SheetAlchemy is a Python library that provides an Object-Relational Mapping (ORM) interface for Google Sheets. It allows developers to interact with Google Sheets data using Python objects and Django-like query syntax, eliminating the need for repetitive Google Sheets API calls.
 
 ## 🚀 Features
 
@@ -33,13 +33,13 @@ G-ODM is a Python library that provides an Object-Relational Mapping (ORM) style
 ### From GitHub (Current)
 
 ```sh
-pip install git+https://github.com/0xdps/g-odm.git
+pip install git+https://github.com/0xdps/sheetalchemy.git
 ```
 
 ### From PyPI (Coming Soon)
 
 ```sh
-pip install godm
+pip install sheetalchemy
 ```
 
 ## 🚀 Quick Start
@@ -49,15 +49,15 @@ pip install godm
 First, set up Google Sheets API authentication:
 
 ```python
-from godm._auth import authenticate
+from sheetalchemy import authenticate
 
 # Option 1: Using service account key file
 authenticate(key_path="/path/to/your/service-account-key.json")
 
 # Option 2: Using environment variable
-# Set GODM_AUTH_KEY_PATH environment variable to your key file path
+# Set SHEETALCHEMY_AUTH_KEY_PATH environment variable to your key file path
 import os
-os.environ['GODM_AUTH_KEY_PATH'] = '/path/to/your/service-account-key.json'
+os.environ['SHEETALCHEMY_AUTH_KEY_PATH'] = '/path/to/your/service-account-key.json'
 
 # Option 3: Using key object directly
 key_object = {
@@ -71,18 +71,16 @@ authenticate(key_object=key_object)
 ### 2. Define Your Model
 
 ```python
-from godm import LoadPolicy
-from godm.field import BooleanField, DateField, IntegerField, StringField
-from godm.model import GModel
+from sheetalchemy import LoadPolicy, Model, StringField, IntegerField, DateField, BooleanField
 
-class Users(GModel):
+class Users(Model):
     name = StringField(name="Name")
     age = IntegerField(name="Age")
     dob = DateField(name="DOB", format=DateField.MM_DD_YYYY, allow_empty=True, default_val="01/01/2010")
     is_family = BooleanField(name="Family")
 
     class Meta:
-        sheet_name = "Test Sheet - GODM"  # Google Sheet name
+        sheet_name = "Test Sheet - SheetAlchemy"  # Google Sheet name
         tab_name = "Users"                # Worksheet/tab name
         header_index = 1                  # Row number containing headers (1-indexed)
         load_policy = LoadPolicy.LAZY     # Load data when first accessed
@@ -107,7 +105,7 @@ for family_member in family_users:
 
 ## 🔐 Authentication
 
-G-ODM uses Google Sheets API v4. You need to:
+SheetAlchemy uses Google Sheets API v4. You need to:
 
 1. Create a Google Cloud Project
 2. Enable Google Sheets API
@@ -258,7 +256,7 @@ class EagerModel(GModel):
 ### Data Transformations
 
 ```python
-from godm.transformers import transform_to_lower_case
+from sheetalchemy.transformers import transform_to_lower_case
 
 # Pre-processing transformations
 name = StringField(
@@ -301,11 +299,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🔒 Privacy
 
-Please review our [Privacy Policy](PRIVACY.md) for information about data handling and privacy considerations when using G-ODM.
+Please review our [Privacy Policy](PRIVACY.md) for information about data handling and privacy considerations when using SheetAlchemy.
 
 ## 🆘 Support
 
-- **Issues**: [GitHub Issues](https://github.com/0xdps/g-odm/issues)
+- **Issues**: [GitHub Issues](https://github.com/0xdps/sheetalchemy/issues)
 - **Documentation**: [Tutorials](tutorials/README.md) and this README
 - **Examples**: Complete applications in the [examples/](examples/) directory
 - **Tests**: Comprehensive test suite in the [tests/](tests/) directory
@@ -318,7 +316,7 @@ Please review our [Privacy Policy](PRIVACY.md) for information about data handli
 
 ## � Tutorials
 
-Learn G-ODM step by step with our comprehensive tutorial series:
+Learn SheetAlchemy step by step with our comprehensive tutorial series:
 
 - **[Getting Started](tutorials/01_getting_started.md)** - Installation, setup, and first models
 - **[Field Types](tutorials/02_field_types.md)** - Complete guide to all field types and validation

@@ -1,7 +1,7 @@
 """
-Advanced Inventory Management System with G-ODM
+Advanced Inventory Management System with SheetAlchemy
 
-This example demonstrates advanced G-ODM features:
+This example demonstrates advanced SheetAlchemy features:
 1. Multiple related models
 2. Custom field transformations
 3. Complex querying and filtering
@@ -32,7 +32,7 @@ Sample Products data:
 
 import os
 from datetime import datetime, timedelta
-from godm import LoadPolicy
+from sheetalchemy import LoadPolicy
 from godm.field import (
     StringField, IntegerField, DateField, BooleanField, 
     DecimalField, ListField, CustomField
@@ -454,7 +454,7 @@ def demonstrate_advanced_filtering(inventory):
 
 def main():
     """Main function to run the inventory management example."""
-    print("🏭 G-ODM Advanced Inventory Management System")
+    print("🏭 SheetAlchemy Advanced Inventory Management System")
     print("=" * 60)
     
     # Setup authentication

@@ -1,5 +1,5 @@
 """
-Simple User Management Example with G-ODM
+Simple User Management Example with SheetAlchemy
 
 This example demonstrates:
 1. Basic model definition
@@ -27,7 +27,7 @@ Alice Brown     | 29 | alice@company.com   | TRUE  | Engineering | 07/05/2023 | 
 
 import os
 from datetime import datetime
-from godm import LoadPolicy
+from sheetalchemy import LoadPolicy
 from godm.field import StringField, IntegerField, DateField, BooleanField, ListField
 from godm.model import GModel
 from godm._auth import authenticate
@@ -308,7 +308,7 @@ def demonstrate_model_operations():
 
 def main():
     """Main function to run the user management example."""
-    print("🚀 G-ODM User Management Example")
+    print("🚀 SheetAlchemy User Management Example")
     print("=" * 50)
     
     # Step 1: Setup authentication

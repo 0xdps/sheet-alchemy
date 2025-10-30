@@ -3,15 +3,15 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "godm"
+name = "sheetalchemy"
 dynamic = ["version"]
-description = "Data Object Model for Google Sheet"
+description = "SheetAlchemy: Google Sheets Object-Relational Mapping (ORM) for Python"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
     {name = "Devendra Pratap Singh", email = "dps.manit@gmail.com"}
 ]
-keywords = ["spreadsheets", "google-spreadsheets", "object-data-model"]
+keywords = ["spreadsheets", "google-sheets", "orm", "sheetalchemy", "object-relational-mapping"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -30,29 +30,31 @@ classifiers = [
 ]
 requires-python = ">=3.8"
 dependencies = [
-    "gspread>=6.0.0",
+    "gspread>=6.2.0",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=6.0",
-    "pytest-cov>=2.10",
-    "black>=21.0",
-    "isort>=5.0",
-    "flake8>=3.8",
-    "mypy>=0.800",
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+    "build>=0.10.0",
+    "twine>=4.0.0",
 ]
 
 [project.urls]
-Homepage = "https://github.com/0xdps/g-odm"
-Repository = "https://github.com/0xdps/g-odm.git"
-Issues = "https://github.com/0xdps/g-odm/issues"
+Homepage = "https://github.com/0xdps/sheetalchemy"
+Repository = "https://github.com/0xdps/sheetalchemy.git"
+Issues = "https://github.com/0xdps/sheetalchemy/issues"
 
 [tool.setuptools.dynamic]
-version = {attr = "godm.__version__"}
+version = {attr = "sheetalchemy.__version__"}
 
 [tool.setuptools.packages.find]
-include = ["godm*"]
+include = ["sheetalchemy*"]
 
 [tool.black]
 line-length = 88

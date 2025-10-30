@@ -10,9 +10,9 @@ This module tests:
 import pytest
 from unittest.mock import Mock, patch, mock_open
 import json
-from godm.iterator import GIterator
-from godm._auth import authenticate, get_sheet, load_sheet
-from godm.exceptions import InvalidIndexException
+from sheetalchemy.iterator import GIterator
+from sheetalchemy._auth import authenticate, get_sheet, load_sheet
+from sheetalchemy.exceptions import InvalidIndexException
 import gspread
 
 
