@@ -10,6 +10,7 @@ jobs:
   test:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false  # Continue running other matrix jobs even if one fails
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
@@ -83,3 +84,45 @@ jobs:
     - name: Check package
       run: |
         twine check dist/*
+
+  # Summary job that depends on all test jobs and fails if any test job failed
+  test-summary:
+    name: Test Summary
+    runs-on: ubuntu-latest
+    needs: [test]
+    if: always()  # Always run, even if test jobs fail
+    
+    steps:
+    - name: Check test results
+      run: |
+        echo "Test job results:"
+        echo "Needs context: ${{ toJson(needs) }}"
+        
+        # Check if any test job failed
+        if [[ "${{ needs.test.result }}" == "failure" ]]; then
+          echo "❌ Some test jobs failed"
+          echo "::error::One or more test matrix jobs failed. Check the individual job logs for details."
+          exit 1
+        elif [[ "${{ needs.test.result }}" == "cancelled" ]]; then
+          echo "⏹️ Test jobs were cancelled"
+          echo "::error::Test jobs were cancelled."
+          exit 1
+        else
+          echo "✅ All test jobs passed successfully"
+        fi
+        
+    - name: Create test summary
+      run: |
+        echo "## 🧪 Test Matrix Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [[ "${{ needs.test.result }}" == "success" ]]; then
+          echo "✅ **Status**: All tests passed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "All Python versions (3.8-3.13) and operating systems (Ubuntu, Windows, macOS) tested successfully." >> $GITHUB_STEP_SUMMARY
+        else
+          echo "❌ **Status**: Some tests failed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Check individual job logs for failure details:" >> $GITHUB_STEP_SUMMARY
+          echo "- [Test Jobs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
+        fi
