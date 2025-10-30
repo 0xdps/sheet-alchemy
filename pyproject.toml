@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sheetalchemy"
-version = "2.0"
+dynamic = ["version"]
 description = "SheetAlchemy: Google Sheets Object-Relational Mapping (ORM) for Python"
 readme = "README.md"
-license = {text = "MIT"}
+license = "MIT"
 authors = [
     {name = "Devendra Pratap Singh", email = "dps.manit@gmail.com"}
 ]
