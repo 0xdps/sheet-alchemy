@@ -7,7 +7,7 @@ name = "sheetalchemy"
 dynamic = ["version"]
 description = "SheetAlchemy: Google Sheets Object-Relational Mapping (ORM) for Python"
 readme = "README.md"
-license = {text = "MIT"}
+license = "MIT"
 authors = [
     {name = "Devendra Pratap Singh", email = "dps.manit@gmail.com"}
 ]
