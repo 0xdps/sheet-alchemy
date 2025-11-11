@@ -1,0 +1,249 @@
+/* Dark theme toggle for Read the Docs theme */
+
+/* Enable dark mode by default based on system preference */
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+    }
+}
+
+/* Add dark mode toggle button styling */
+.rst-versions {
+    background: var(--sidebar-background, #1f1f1f) !important;
+}
+
+/* Dark theme variables */
+html[data-theme='dark'] {
+    --sidebar-background: #1e1e2e;
+    --sidebar-text: #cdd6f4;
+    --body-background: #0d1117;
+    --body-text: #c9d1d9;
+    --link-color: #58a6ff;
+    --code-background: #161b22;
+    --code-text: #e6edf3;
+    --header-background: #161b22;
+    --border-color: #30363d;
+    --method-background: #21262d;
+    --inline-code-bg: #6e768166;
+    --inline-code-text: #f0883e;
+}
+
+/* Apply dark theme styles */
+html[data-theme='dark'] .wy-nav-side {
+    background: var(--sidebar-background) !important;
+}
+
+html[data-theme='dark'] .wy-side-nav-search {
+    background-color: var(--header-background) !important;
+}
+
+html[data-theme='dark'] .wy-side-nav-search input[type=text] {
+    background-color: var(--code-background) !important;
+    color: var(--body-text) !important;
+    border-color: #444 !important;
+}
+
+html[data-theme='dark'] .wy-menu-vertical a {
+    color: var(--sidebar-text) !important;
+}
+
+html[data-theme='dark'] .wy-menu-vertical a:hover {
+    background-color: #2a2a2a !important;
+}
+
+html[data-theme='dark'] .wy-menu-vertical li.current a {
+    color: var(--sidebar-text) !important;
+    background-color: #2a2a2a !important;
+}
+
+html[data-theme='dark'] .wy-menu-vertical li.toctree-l1.current > a {
+    background: #2a2a2a !important;
+    border: none !important;
+}
+
+html[data-theme='dark'] .wy-menu-vertical li.toctree-l2 a,
+html[data-theme='dark'] .wy-menu-vertical li.toctree-l3 a,
+html[data-theme='dark'] .wy-menu-vertical li.toctree-l4 a {
+    color: #8b949e !important;
+}
+
+html[data-theme='dark'] .wy-menu-vertical li.toctree-l2.current > a,
+html[data-theme='dark'] .wy-menu-vertical li.toctree-l3.current > a {
+    background: #21262d !important;
+    color: #cdd6f4 !important;
+}
+
+html[data-theme='dark'] .wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a {
+    background: var(--sidebar-background) !important;
+}
+
+html[data-theme='dark'] .wy-menu-vertical li span.toctree-expand {
+    color: #8b949e !important;
+}
+
+html[data-theme='dark'] .wy-side-nav-search > a,
+html[data-theme='dark'] .wy-side-nav-search .wy-dropdown > a {
+    color: #e0e0e0 !important;
+}
+
+html[data-theme='dark'] .wy-nav-content-wrap {
+    background: var(--body-background) !important;
+}
+
+html[data-theme='dark'] .wy-nav-content {
+    background: var(--body-background) !important;
+    color: var(--body-text) !important;
+}
+
+html[data-theme='dark'] .rst-content {
+    color: var(--body-text) !important;
+}
+
+html[data-theme='dark'] a {
+    color: var(--link-color) !important;
+}
+
+html[data-theme='dark'] .rst-content .highlighted {
+    background: var(--code-background) !important;
+}
+
+html[data-theme='dark'] .rst-content code.literal,
+html[data-theme='dark'] .rst-content tt.literal {
+    background: var(--inline-code-bg) !important;
+    color: var(--inline-code-text) !important;
+    border: 1px solid var(--border-color) !important;
+    padding: 2px 5px !important;
+    border-radius: 3px !important;
+}
+
+html[data-theme='dark'] .rst-content pre.literal-block,
+html[data-theme='dark'] .rst-content div[class^='highlight'] {
+    background: var(--code-background) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 6px !important;
+}
+
+html[data-theme='dark'] .rst-content div[class^='highlight'] pre {
+    background: var(--code-background) !important;
+    color: var(--code-text) !important;
+}
+
+html[data-theme='dark'] .rst-content dl:not(.docutils) code.descname,
+html[data-theme='dark'] .rst-content dl:not(.docutils) code.descclassname {
+    background: transparent !important;
+    color: #79c0ff !important;
+    font-weight: 600 !important;
+}
+
+html[data-theme='dark'] .rst-content dl:not(.docutils) .sig-name {
+    color: #d2a8ff !important;
+    font-weight: 700 !important;
+}
+
+html[data-theme='dark'] .rst-content dl:not(.docutils) dt {
+    color: #c9d1d9 !important;
+}
+
+html[data-theme='dark'] .rst-content dl:not(.docutils) .sig-prename {
+    color: #8b949e !important;
+}
+
+html[data-theme='dark'] .rst-content dl:not(.docutils) .sig-param {
+    color: #ffa657 !important;
+}
+
+html[data-theme='dark'] .rst-content dl:not(.docutils) em.property {
+    color: #ff7b72 !important;
+}
+
+html[data-theme='dark'] .rst-content dl:not(.docutils) .sig {
+    background: var(--method-background) !important;
+}
+
+html[data-theme='dark'] code.literal {
+    color: #ff7b72 !important;
+}
+
+html[data-theme='dark'] .wy-table-backed,
+html[data-theme='dark'] .wy-table-odd td,
+html[data-theme='dark'] .wy-table-striped tr:nth-child(2n-1) td {
+    background-color: var(--method-background) !important;
+}
+
+html[data-theme='dark'] .wy-table-bordered-all td {
+    border-color: var(--border-color) !important;
+}
+
+html[data-theme='dark'] .rst-content dl:not(.docutils) dt {
+    background: var(--method-background) !important;
+    color: var(--body-text) !important;
+    border-top: solid 3px var(--border-color) !important;
+    border-left: solid 3px var(--border-color) !important;
+}
+
+html[data-theme='dark'] .rst-content .admonition {
+    background: var(--method-background) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+html[data-theme='dark'] .rst-content .note,
+html[data-theme='dark'] .rst-content .warning,
+html[data-theme='dark'] .rst-content .tip {
+    background: var(--method-background) !important;
+    border-left: 3px solid #58a6ff !important;
+}
+
+html[data-theme='dark'] .rst-content .warning {
+    border-left-color: #d29922 !important;
+}
+
+html[data-theme='dark'] .rst-content .note .admonition-title,
+html[data-theme='dark'] .rst-content .warning .admonition-title,
+html[data-theme='dark'] .rst-content .tip .admonition-title {
+    background: var(--code-background) !important;
+    color: #58a6ff !important;
+}
+
+html[data-theme='dark'] .rst-content .warning .admonition-title {
+    color: #d29922 !important;
+}
+
+html[data-theme='dark'] .highlight {
+    background: var(--code-background) !important;
+}
+
+/* Light theme (default) */
+html[data-theme='light'] {
+    color-scheme: light;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    background: #2980B9;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: #3498db;
+    transform: scale(1.1);
+}
+
+html[data-theme='dark'] .theme-toggle {
+    background: #444;
+}
+
+html[data-theme='dark'] .theme-toggle:hover {
+    background: #555;
+}
